@@ -41,7 +41,6 @@ class Producer:
         # If the topic does not already exist, try to create it
         if self.topic_name not in Producer.existing_topics:
             self.create_topic()
-            Producer.existing_topics.add(self.topic_name)
 
         #Configure the AvroProducer
         self.avro_producer = AvroProducer({
@@ -57,14 +56,13 @@ class Producer:
         admin_client = AdminClient({"bootstrap.servers": "localhost:9092"})
         topic_list = [NewTopic(self.topic_name,self.num_partitions,self.num_replicas)]
         fs = admin_client.create_topics(topic_list)
-        sleep(10)
         for topic, f in fs.items(): 
             try: 
                 f.result()
                 print("Topic {} created".format(topic))
+                Producer.existing_topics.add(self.topic_name)
             except Exception as e: 
                 logger.info("Failed to create topic {}: {}".format(topic, e))
-
 
     def time_millis(self):
         return int(round(time.time() * 1000))
@@ -72,9 +70,4 @@ class Producer:
     #TODO What is this and where is it going to be used?
     def close(self):
         """Prepares the producer for exit by cleaning up the producer"""
-        #
-        #
-        # TODO: Write cleanup code for the Producer here
-        #
-        #
         logger.info("producer close incomplete - skipping")
