@@ -5,7 +5,6 @@ import time
 from confluent_kafka import avro
 from confluent_kafka.admin import AdminClient, NewTopic, NewPartitions, ConfigResource, ConfigSource
 from confluent_kafka.avro import AvroProducer
-import sleep 
 
 logger = logging.getLogger(__name__)
 
@@ -71,3 +70,4 @@ class Producer:
     def close(self):
         """Prepares the producer for exit by cleaning up the producer"""
         logger.info("producer close incomplete - skipping")
+

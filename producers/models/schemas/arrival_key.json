@@ -1,5 +1,5 @@
 {
-  "namespace": "com.udacity",
+  "namespace":  "com.udacity.train.arrival.key",
   "type": "record",
   "name": "arrival.key",
   "fields": [
@@ -9,3 +9,5 @@
     }
   ]
 }
+
+

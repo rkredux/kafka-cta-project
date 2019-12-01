@@ -1,3 +1,19 @@
 {
-  "TODO": "Complete this Schema! (Make sure to delete this Key/Value Pair!"
+   "namespace": "com.udacity.station.turnstile",
+   "name": "turnstile.value",
+   "type": "record",
+   "fields" : [
+     {
+       "name" : "station_id",
+       "type" : "string"
+     }, 
+     {
+        "name": "station_name", 
+        "type": "string"
+     }, 
+     {
+         "name": "line", 
+         "type": "int"
+     }
+   ]
 }
